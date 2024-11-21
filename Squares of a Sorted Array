@@ -1,0 +1,24 @@
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
+        """
+
+        gesamtlange = m + n
+
+        for i in range(m, gesamtlange):
+            nums1[i] = nums2[i-m]
+
+        # sorting it
+        for i in range(len(nums1)):
+            shortest = i
+            for y in range(i, len(nums1)):
+                if nums1[y] < nums1[shortest]:
+                    help = nums1[y]
+                    nums1[y] = nums1[shortest]
+                    nums1[shortest] = help
+        return nums1
